@@ -521,6 +521,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "handler"
+version = "0.1.0"
+dependencies = [
+ "actix-web",
+ "env_logger",
+ "serde",
+ "sha2",
+]
+
+[[package]]
 name = "hashbrown"
 version = "0.12.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -588,16 +598,6 @@ checksum = "bd070e393353796e801d209ad339e89596eb4c8d430d18ede6a1cced8fafbd99"
 dependencies = [
  "autocfg",
  "hashbrown",
-]
-
-[[package]]
-name = "init_handler"
-version = "0.1.0"
-dependencies = [
- "actix-web",
- "env_logger",
- "serde",
- "sha2",
 ]
 
 [[package]]

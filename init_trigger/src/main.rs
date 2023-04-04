@@ -24,7 +24,7 @@ struct Hash {
     hash: String,
 }
 
-#[post("/api/token")] // /api is default url
+#[post("/api/token")] // /api is default route for Azure Functions
 async fn tokenize(text: web::Json<Text>) -> impl Responder {
     // receives text in json
     // hashes and returns hash
