@@ -27,7 +27,7 @@ jobs:
     - name: Build release
       shell: bash
       run: |
-       cargo build --release --target=x86_64-unknown-linux-musl
+       cargo build --manifest-path=init_trigger/Cargo.toml --release --target=x86_64-unknown-linux-musl
        cp target/x86_64-unknown-linux-musl/release/handler .
     - name: Copy handler to parent directory
       shell: bash
