@@ -31,7 +31,7 @@ jobs:
        cp target/x86_64-unknown-linux-musl/release/handler .
     - name: Copy handler to parent directory
       shell: bash
-      run: cp init_trigger/target/x86_64-unknown-linux-musl/release/handler .
+      run: cp target/x86_64-unknown-linux-musl/release/handler .
 
     - name: Azure Login
       uses: azure/login@v1
