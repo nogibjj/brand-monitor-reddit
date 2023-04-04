@@ -28,7 +28,7 @@ jobs:
       shell: bash
       run: |
        cd init_trigger && cargo build --release --target=x86_64-unknown-linux-musl
-       cp init_trigger/target/x86_64-unknown-linux-musl/release/handler .
+       cp target/x86_64-unknown-linux-musl/release/handler .
     - name: Copy handler to parent directory
       shell: bash
       run: cp init_trigger/target/x86_64-unknown-linux-musl/release/handler .
