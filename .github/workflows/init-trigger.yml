@@ -1,10 +1,10 @@
-name: initial trigger push
+name: initial trigger action
 
 on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_NAME: brand-monitor-init # set this to your application's name, it has to be unique
+  AZURE_FUNCTIONAPP_NAME: init-brand-monitor # set this to your application's name, it has to be unique
   AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'   # set this to the path to your web app project, defaults to the repository root
 
 jobs:
@@ -27,16 +27,12 @@ jobs:
     - name: Build release
       shell: bash
       run: |
-       cargo build --manifest-path=init_trigger/Cargo.toml --release --target=x86_64-unknown-linux-musl
+       cargo build --release --manifest-path=init_trigger/Cargo.toml --target=x86_64-unknown-linux-musl
        cp init_trigger/target/x86_64-unknown-linux-musl/release/handler .
     - name: Copy handler to parent directory
       shell: bash
       run: cp init_trigger/target/x86_64-unknown-linux-musl/release/handler .
-      
-    # install azure cli - depends on someone elses action
-    - uses: elstudio/action-install-azure-cli@v1
-    # Now run whatever steps require the `az` command line utility 
-        
+
     - name: Azure Login
       uses: azure/login@v1
       with:
