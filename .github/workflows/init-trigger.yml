@@ -36,7 +36,6 @@ jobs:
     # install azure cli - depends on someone elses action
     - uses: elstudio/action-install-azure-cli@v1
     # Now run whatever steps require the `az` command line utility 
-    - uses: azure/webapps-deploy@v2
         
     - name: Azure Login
       uses: azure/login@v1
