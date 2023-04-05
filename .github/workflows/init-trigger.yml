@@ -27,20 +27,12 @@ jobs:
     - name: Build release
       shell: bash
       run: |
-       cargo build --release --manifest-path=init_trigger/Cargo.toml --target=x86_64-unknown-linux-musl
-       cp init_trigger/target/x86_64-unknown-linux-musl/release/handler .
+       cargo build --release --target=x86_64-unknown-linux-musl
+       cp target/x86_64-unknown-linux-musl/release/handler .
     - name: Copy handler to parent directory
       shell: bash
-      run: cp init_trigger/target/x86_64-unknown-linux-musl/release/handler .
+      run: cp target/x86_64-unknown-linux-musl/release/handler .
 
-    - name: Install Azure cli
-      run: |
-        sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg
-        curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
-        AZ_REPO=$(lsb_release -cs)
-        echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
-        sudo apt-get update
-        sudo apt-get install azure-cli
 
     - name: Azure Login
       uses: azure/login@v1
