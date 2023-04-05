@@ -27,11 +27,11 @@ jobs:
     - name: Build release
       shell: bash
       run: |
-       cargo build --release --target=x86_64-unknown-linux-musl
-       cp target/x86_64-unknown-linux-musl/release/handler .
+       cargo build --release --manifest-path=init_trigger/Cargo.toml --target=x86_64-unknown-linux-musl
+       cp init_trigger/target/x86_64-unknown-linux-musl/release/handler .
     - name: Copy handler to parent directory
       shell: bash
-      run: cp target/x86_64-unknown-linux-musl/release/handler .
+      run: cp init_trigger/target/x86_64-unknown-linux-musl/release/handler .
 
 
     - name: Azure Login
