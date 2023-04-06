@@ -5,6 +5,7 @@ on:
 
 env:
   AZURE_FUNCTIONAPP_NAME: init-brand-monitor # set this to your application's name, it has to be unique
+  AZURE_GROUP_NAME: init-brand-monitor_group
   AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'   # set this to the path to your web app project, defaults to the repository root
 
 jobs:
@@ -33,7 +34,12 @@ jobs:
       shell: bash
       run: cp init_trigger/target/x86_64-unknown-linux-musl/release/handler .
 
-
+    - name: Install Azure Core Tools
+      shell: bash
+      run: |
+          sudo apt-get update
+          sudo apt-get install azure-functions-core-tools-4
+          
     - name: Azure Login
       uses: azure/login@v1
       with:
