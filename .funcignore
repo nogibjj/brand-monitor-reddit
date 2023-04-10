@@ -6,4 +6,3 @@ __queuestorage__
 local.settings.json
 test
 .venv
-target
